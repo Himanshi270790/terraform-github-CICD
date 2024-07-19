@@ -1,14 +1,24 @@
+data "aws_ami" "ubuntu" {
+  most_recent = true
 
-
-data "aws_vpc" "vpc"{
-  default = true
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
   }
 
-resource "aws_instance" "this" {
-  ami = var.ami_id == null ? data.aws_ami.linux.id : var.ami_id 
-  subnet_id = var.subnet_id
-  instance_type = var.instance_type
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+
   tags = {
-    Name = var.resource_name
+    Name = "HelloWorld"
   }
 }
