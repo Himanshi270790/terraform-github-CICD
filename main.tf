@@ -1,3 +1,9 @@
+
+
+data "aws_vpc" "vpc"{
+  default = true
+  }
+
 resource "aws_instance" "this" {
   ami = var.ami_id == null ? data.aws_ami.linux.id : var.ami_id 
   subnet_id = var.subnet_id
