@@ -18,9 +18,11 @@ jobs:
     name: 'Terraform'
     env:
       # AWS secrets
-      AWS_ACCESS_KEY_ID: AKIA6ODU5OJ6RE4KZNMH
+      AWS_ACCESS_KEY_ID: AKIAY3XF4SGHJO2K4XMW
 
-      AWS_SECRET_ACCESS_KEY: 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
+
+      AWS_SECRET_ACCESS_KEY: Aa1cpwUBFxXUCQydN2P5trsWILlDeSg4zSmIWjo7
+
 
 
     runs-on: ubuntu-latest
